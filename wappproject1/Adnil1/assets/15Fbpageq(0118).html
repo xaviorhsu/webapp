@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2017/01/18</title>
+<style type="text/css">
+<!--
+body { font-size:15px;}
+.dv { font-size:16px;}
+-->
+</style>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script language="javascript" src="jquery-3.1.1.min.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+	db=new Firebase("https://chien1-9a5df.firebaseio.com");
+	msg="";
+  $("#bt5").click(function() {
+	document.getElementById("dv1").innerHTML="";
+	document.getElementById("t6").value="";
+	document.getElementById("t7").value="";
+	msg="";
+	id=document.getElementById("t5").value;						 
+	db.on("value",function(data){
+		$.each(data.val(),function(k,v){
+			if (v.pid==id){
+			msg+="\t"+v.pid+"\t"+v.pname+"\t"+v.pbirth+"\t"+v.pblood+"\t"+v.pschool+"<br/>"; }			
+						   });
+		 if (msg=="") {msg="[(1)查無資料]";}
+	document.getElementById("dv1").innerHTML=msg;
+						   });
+  });
+  $("#bt6").click(function() {
+	document.getElementById("dv1").innerHTML="";
+	document.getElementById("t5").value="";
+	msg="";
+	id1=document.getElementById("t6").value;
+	id2=document.getElementById("t7").value;
+	db.on("value",function(data){
+		$.each(data.val(),function(k,v){
+			if (v.pid>=id1 && v.pid<=id2){
+			msg+="\t"+v.pid+"\t"+v.pname+"\t"+v.pbirth+"\t"+v.pblood+"\t"+v.pschool+"<p>"; }			
+						   });
+		 if (msg=="") {msg="[(2)查無資料]";}
+	document.getElementById("dv1").innerHTML=msg;
+						   });
+  });
+});
+</script>
+</head>
+
+<body>
+<center>
+<hr color="darkred" width="300" size="10" />
+<form id="f1" name="f1" method="get">
+<table border="1" width="300" height="450" rules="none" background="bg51.jpg">
+<tr><td height="10">(1)查詢編號
+	<input type="text" id="t5" name="t5" size="10" />
+    <input type="button" id="bt5" class="bt" value="查詢" />
+</td></tr>
+<tr><td height="10">(2)起編號
+	<input type="text" id="t6" name="t6" size="4" />訖編號
+    <input type="text" id="t7" name="t7" size="4" />
+    <input type="button" id="bt6" class="bt" value="查詢" />
+</td></tr>
+<tr><td height="2"><hr /></td></tr>
+<tr><td>
+<div id="dv1" class="dv" style="width:300px;height:420px;overflow:scroll;"></div>
+</td></tr>
+<tr><td height="10" align="right">
+	<a href="14Fbpagef(0116).html">回首頁</a>
+</td></tr>
+</table>
+</form>
+<hr color="darkred" width="300" size="10" />
+</center>
+</body>
+</html>

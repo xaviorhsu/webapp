@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2016/12/30</title>
+<style type="text/css">
+<!--
+p a { text-decoration:none; background-color:#99F;font-size:20px; font-weight:bold; border:2px solid #60C; box-shadow:10px 10px 10px orange;}
+-->
+</style>
+<script language="javascript">
+	var A=["程式","美工","系統","資料庫","繪圖"];
+	var B=[41,66,90,23,11,57];
+	var C=new Array();
+		C[0]=14;
+		C[1]=42;
+		C[2]=98;
+		C[3]=66;
+		C[4]=11;
+	function fun0() { document.getElementById("sp1").innerHTML=""; }
+	function fun1()	{
+		document.getElementById("sp1").innerHTML=document.getElementById("sp1").innerHTML+"(1)A.length = "+A.length+" / B.length = "+B.length+" / C.length = "+C.length+"<br\>";
+	}
+	function fun2()	{
+		var str="";
+		for (i=0;i<A.length;i++) {
+			str=str+A[i]+"&nbsp;&nbsp;&nbsp;&nbsp;"; }
+		document.getElementById("sp1").innerHTML=document.getElementById("sp1").innerHTML+"(2)content of A = "+str+"<br\>";	    
+	}
+	function fun3()	{
+		var str="";
+		for (i=0;i<B.length;i++) {
+			str=str+String(B[i])+"&nbsp;&nbsp;&nbsp;&nbsp;"; }
+		document.getElementById("sp1").innerHTML=document.getElementById("sp1").innerHTML+"(3)content of B = "+str+"<br\>";		
+	}
+	function fun4()	{
+		var str="";
+		for (i=0;i<C.length;i++) {
+			str=str+String(C[i])+"&nbsp;&nbsp;&nbsp;&nbsp;"; }
+		document.getElementById("sp1").innerHTML=document.getElementById("sp1").innerHTML+"(4)content of C = "+str+"<br\>";			
+	}
+	function fun5()	{
+		var str="";
+		var max=C[0];
+		var min=C[0];
+		for (i=0;i<C.length;i++) {
+			if (max<=C[i]) { max=C[i]; }
+			if (min>=C[i]) { min=C[i]; }
+		}
+		document.getElementById("sp1").innerHTML=document.getElementById("sp1").innerHTML+"(5)Max of Array C = "+max+" / Min of Array C = "+min+"<br\>";			
+	}
+	function fun6()	{
+		C.sort();
+		var strA="";strD="";
+		for (var i=0;i<C.length;i++) {
+			strA=strA+String(C[i])+"&nbsp;&nbsp;&nbsp;&nbsp;"; }
+		for (var j=C.length-1;j>=0;j--) {
+			strD=strD+String(C[j])+"&nbsp;&nbsp;&nbsp;&nbsp;"; }
+		document.getElementById("sp1").innerHTML=document.getElementById("sp1").innerHTML+"(6)ASC of Array C = "+strA+" / DEC of Array C = "+strD+"<br\>";			
+	}
+	function fun7()	{
+		B.reverse();
+		var str="";
+		for (i=0;i<B.length;i++) {
+			str=str+String(B[i])+"&nbsp;&nbsp;&nbsp;&nbsp;"; }
+		document.getElementById("sp1").innerHTML=document.getElementById("sp1").innerHTML+"(7)content of reverse B = "+str+"<br\>";		
+	}
+	function fun8()	{		
+		var str="";
+		var R=B.map(function(v,index,array){
+					return v*v;
+			});
+		document.getElementById("sp1").innerHTML=document.getElementById("sp1").innerHTML+"(8)content of map B(v*v) = "+R+"<br\>";		
+	}
+</script>
+</head>
+
+<body>
+<hr color="#3300FF" size="10" />
+<center>
+<p>
+<a href="javascript:voide;"  onclick="fun0();" >【 0.清除(0) 】</a>
+<p>
+<a href="javascript:voide;"  onclick="fun1();" >【 1.執行(1) 】</a>
+<==><==>
+<a href="javascript:voide;"  onclick="fun2();" >【 2.執行(2) 】</a>
+</p>
+<p>
+<a href="javascript:voide;"  onclick="fun3();" >【 3.執行(3) 】</a>
+<==><==>
+<a href="javascript:voide;"  onclick="fun4();" >【 4.執行(4) 】</a>
+</p>
+<p>
+<a href="javascript:voide;"  onclick="fun5();" >【 5.執行(5) 】</a>
+<==><==>
+<a href="javascript:voide;"  onclick="fun6();" >【 6.執行(6) 】</a>
+</p>
+<p>
+<a href="javascript:voide;"  onclick="fun7();" >【 7.執行(7) 】</a>
+<==><==>
+<a href="javascript:voide;"  onclick="fun8();" >【 8.執行(8) 】</a>
+</p>
+<hr color="darkred" size="10" />
+<div id="dv1">A=["程式","美工","系統","資料庫","繪圖"] / B=[41,66,90,23,11,57] / C=[14,42,98,66,11]</div>
+<hr color="purple" size="10" />
+<span id="sp1"></span>
+</center>
+<hr color="#3300FF" size="10" />
+</body>
+</html>

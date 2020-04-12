@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2017/01/16</title>
+<style type="text/css">
+<!--
+body { font-size:15px;}
+.dv,.bt { font-size:15px;}
+-->
+</style>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script language="javascript" src="jquery-3.1.1.min.js"></script>
+<script language="javascript">
+$(document).ready(function(){	
+	$("#bt1").click(function()
+		{
+			var id,na,bi,bd,sc="";
+			id=document.getElementById("t1").value;
+			na=document.getElementById("t2").value;
+			bi=document.getElementById("t3").value;
+			bd=document.getElementById("se1").value;
+			sc=document.getElementById("se2").value;
+			db=new Firebase("https://chien1-9a5df.firebaseio.com");
+			var A1="請輸入編號";
+			var A2="請輸入姓名";
+			if(id!=""&&na!="")
+				{			
+			db.push({Aidn:id,Bnam:na,Ebir:bi,Bbld:bd,Fsch:sc});
+			alert("資料寫入Firebase成功");
+				}
+			else	{
+			  if(id==""){alert(A1);document.getElementById("t1").focus;} 			 			  else if(na=="")
+			  			{alert(A2);document.getElementById("t2").focus;}
+			  		}
+		});
+	$("#bt2").click(function()
+		{ location.href="14Fbpage_main(0116).html"; });	
+	$("#bt3").click(function()
+		{ location.href="15Fbpage_bq(0118).html?sw=b"; });
+	$("#bt4").click(function()
+		{ location.href="15Fbpage_bq(0118).html?sw=q"; });
+	$("#btd").click(function()
+		{ location.href="16Fbpage_dmsf(0120).html?sw=d"; });
+	$("#btm").click(function()
+		{ location.href="16Fbpage_dmsf(0120).html?sw=m"; });
+	$("#bts").click(function()
+		{ location.href="16Fbpage_dmsf(0120).html?sw=s"; });
+	$("#btf").click(function()
+		{ location.href="16Fbpage_dmsf(0120).html?sw=f"; });
+});
+/* ========================================================= */
+function fun1() {
+	var id=document.getElementById("t1").value;
+	var msg='<font color="red">*[p1001]</font>';
+	if(id!="") { msg="";}
+	document.getElementById("sp1").innerHTML=msg;
+}
+function fun2() {
+	var na=document.getElementById("t2").value;
+	var msg='<font color="red">*[3~5個中文字]</font>';
+	if(na!="") { msg="";}
+	document.getElementById("sp2").innerHTML=msg;
+}
+</script>
+</head>
+
+<body>
+<center>
+<hr color="darkred" width="300" size="10" />
+<form id="f1" name="f1" method="get">
+<table border="1" width="300" height="450" rules="none" background="bg51.jpg">
+<tr><td align="center" colspan="2"><font size="+2"><b>雲端個人資料</b></font>
+</td></tr>
+<tr><td colspan="2">
+【編號】: <input type="text" id="t1" name="t1" size="26" onchange="fun1();" /><br />
+<span id="sp1"><font color="red">*[p1001]</font></span>
+</td></tr>
+<tr><td colspan="2">
+【姓名】: <input type="text" id="t2" name="t2" size="26" onchange="fun2();" /><br />
+<span id="sp2"><font color="red">*[3~5個中文字]</font></span>
+</td></tr>
+<tr><td colspan="2">
+【生日】: <input type="text" id="t3" name="t3" size="26" />
+</td></tr>
+<tr><td colspan="2">
+【血型】: <select id="se1" name="se1" style="width:190px" >
+         <option value="A" >A</option>
+         <option value="B" >B</option>
+         <option value="O" >O</option>
+         <option value="AB">AB</option>
+         <option value="其他">其他</option>
+		</select>
+</td></tr>
+<tr><td colspan="2">
+【學歷】: <select id="se2" name="se2" style="width:190px" >
+         <option value="高中" >高中</option>
+         <option value="專科" >專科</option>
+         <option value="大學" >大學</option>
+         <option value="研究所" >研究所</option>
+         <option value="其他" >其他</option>
+		</select>
+</td></tr>
+<tr><td align="center" width="50%">
+	<input type="button" id="bt1" class="bt" value="儲存"  />
+</td>
+<td align="center" width="50%">
+	<input type="button" id="bt2" class="bt" value="清除" />
+</td></tr>
+<tr><td align="center">
+	<input type="button" id="bt3" class="bt" value="瀏覽" />
+</td>
+<td align="center">
+	<input type="button" id="bt4" class="bt" value="查詢" />
+</td></tr>
+<tr><td align="center">
+	<input type="button" id="btd" class="bt" value="刪除" />
+</td>
+<td align="center">
+	<input type="button" id="btm" class="bt" value="修改" />
+</td></tr>
+<tr><td align="center">
+	<input type="button" id="bts" class="bt" value="排序瀏覽" />
+</td>
+<td align="center">
+	<input type="button" id="btf" class="bt" value="模糊查詢" />
+</td></tr>
+<tr><td align="right" colspan="2">Firebase database
+</td></tr>
+</table>
+</form>
+<hr color="darkred" width="300" size="10" />
+</center>
+</body>
+</html>

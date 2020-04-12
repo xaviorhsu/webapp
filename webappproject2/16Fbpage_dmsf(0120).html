@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2017/01/18</title>
+<style type="text/css">
+<!--
+body { font-size:15px;}
+.dv,.bt { font-size:16px;}
+-->
+</style>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script language="javascript" src="jquery-3.1.1.min.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+	var vars=getUrlVars("sw");
+	var msg="",key="",id1="",id2="",na1="",na2="";var likena;
+	var db=new Firebase("https://chien1-9a5df.firebaseio.com");
+/* ------------------------------------------- */
+	if (vars=="d") {
+		$("#dv1,#dv3,#dv5,#bt7").hide(); $("#dv2,#dv4,#bt6").show(); }
+	if (vars=="m") {
+		$("#dv1,#dv3,#dv4,#bt6").hide(); $("#dv2,#dv5,#bt7").show(); }
+	if (vars=="s") {
+		$("#dv2,#dv3,#dv5,#bt6,#bt7").hide(); $("#dv1,#dv4").show();displymsg(1,1); }
+	if (vars=="f") {
+		$("#dv1,#dv2,#dv5,#bt6,#bt7").hide(); $("#dv3,#dv4").show(); }
+/* ------------------------------------------- */	
+  $("#bt5").click(function() {
+	document.getElementById("dv4").innerHTML="";
+	key="";	msg="";
+	id1=document.getElementById("t5").value;
+	id2=document.getElementById("t6").value;
+	if (id2=="" && id1=="")
+		 { alert("請輸入編號"); document.getElementById("t5").focus;
+		   if (vars!="m") document.getElementById("dv4").innerHTML=""; }
+	else { if (id2=="")	{ id2=id1; }
+		   if (id1=="") { id1=id2; }
+	       displymsg(id1,id2);}
+  });
+/* ------------------------------------------- */
+  $("#btf").click(function() {
+	document.getElementById("dv4").innerHTML="";
+	key="";	msg="";
+	na1=document.getElementById("t7").value;
+	na2=document.getElementById("t7").value;
+	if (na1=="" && na2=="")
+		 { alert("欄位請輸入"); document.getElementById("t7").focus; }
+	else { displymsg(na1,na2);}
+  });
+/* ------------------------------------------- */
+  $("#bt6").click(function() {
+	 id1=document.getElementById("t5").value;
+	 id2=document.getElementById("t6").value;
+	 if (id2=="" && id1=="")
+			{ alert("請輸入編號");
+		 	  document.getElementById("id1").focus;
+			  document.getElementById("dv4").innerHTML=""; } 
+	 else if (key=="")
+	 			{ alert("請確認是否有該筆資料?");
+				  document.getElementById("id1").focus;  }
+	 	  else  { alert(key);
+	 			  db.child(key).remove();
+	 			  alert("remove finished"); key="";
+				  document.getElementById("dv4").innerHTML="";	}
+  });
+/* ------------------------------------------- */
+  $("#bt7").click(function() {
+	 id1=document.getElementById("t5").value;
+	 id2=document.getElementById("t6").value;
+	 if (id2=="" && id1=="")
+			{ alert("請輸入編號");
+		 	  document.getElementById("id1").focus;
+			  $("#m1,#m2,#m3,#m4,#m5").val=""; }  
+	 else if (key=="")
+	 			{ alert("請確認是否有該筆資料?");
+				  document.getElementById("id1").focus;  }
+	 	  else { alert(key);
+	 			 db.child(key).set({
+					Aidn:document.getElementById("m1").value,
+					Bnam:document.getElementById("m2").value,
+					Ebir:document.getElementById("m3").value,
+					Dbld:document.getElementById("m4").value,
+					Fsch:document.getElementById("m5").value
+				 });
+	 			 alert("modify finished"); key="";
+	 			 $("#m1,#m2,#m3,#m4,#m5").val="";
+			   }
+  });  
+/* ------------------------------------------- */
+  function displymsg(A,B)
+	{
+	  if (vars=="s"){
+		db.orderByChild("Aidn").on("child_added",function(s){
+			 msg+="\t"+s.val().Aidn+"\t"+s.val().Bnam+"\t"+s.val().Ebir+"\t"+s.val().Dbld+"\t"+s.val().Fsch+"<p>";
+			  if (msg=="") alert("[查無資料]");
+			  else document.getElementById("dv4").innerHTML=msg;
+			});		
+		}
+	  else if (vars=="f"){
+		db.on("value",function(data){
+		 $.each(data.val(),function(k,v){
+			likena=v.Bnam; len=v.Bnam.length;
+			for (var i=0;i<len;i++) {
+			if (likena.charAt(i)==A){
+			msg+="\t"+v.Aidn+"\t"+v.Bnam+"\t"+v.Ebir+"\t"+v.Dbld+"\t"+v.Fsch+"<p>"; break;}}
+		 	});
+		 document.getElementById("dv4").innerHTML=msg;
+		 });
+	  	}		
+	  else { 
+	  	db.on("value",function(data){
+		 $.each(data.val(),function(k,v){
+			if ((A==1 && B==1) || (v.Aidn>=A && v.Aidn<=B))
+			{ key=k;
+			  if (vars=="m")	{ 
+				document.getElementById("m1").value=v.Aidn;
+			    document.getElementById("m2").value=v.Bnam;
+			    document.getElementById("m3").value=v.Ebir;
+			    document.getElementById("m4").value=v.Dbld;
+			    document.getElementById("m5").value=v.Fsch; }
+			  else {  msg+="\t"+v.Aidn+"\t"+v.Bnam+"\t"+v.Ebir+"\t"+v.Dbld+"\t"+v.Fsch+"<p>"; }
+			}							});
+			 if (key=="") {	alert("[查無資料]");
+		 				    document.getElementById("id1").focus; }
+		 	 else if (vars!="m")
+		 			      { document.getElementById("dv4").innerHTML=msg; }
+		 });
+	       }
+	}
+});
+/* ========================================================= */
+function getUrlVars(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+</script>
+</head>
+
+<body>
+<center>
+<hr color="darkred" width="300" size="10" />
+<form id="f1" name="f1" method="get">
+<table border="1" width="300" height="450" rules="none" background="bg51.jpg">
+<tr><td>
+<div id="dv1" class="dv" style="display:none;">排序瀏覽結果</div>
+<div id="dv2" class="dv" style="display:none;">
+	起編號:<input type="text" id="t5" name="t5" size="4" />
+    訖編號:<input type="text" id="t6" name="t6" size="4" />
+    <input type="button" id="bt5" class="bt" value="查詢" />    
+</div>
+<div id="dv3" class="dv" style="display:none;">
+	姓名欄位:<input type="text" id="t7" name="t7" size="8" />&nbsp;&nbsp;
+    <input type="button" id="btf" class="bt" value="模糊查詢" />    
+</div>
+</td></tr>
+<tr><td height="2"><hr size="2" /></td></tr>
+<tr><td>
+<div id="dv4" class="dv" style="display:none;width:300px;height:400px;overflow:scroll;">
+</div>
+<div id="dv5" class="dv" style="display:none;width:300px;height:400px;overflow:scroll;">
+【編號】: <input type="text" id="m1" name="m1" size="24" /><p>
+【姓名】: <input type="text" id="m2" name="m2" size="24" /><p>
+【生日】: <input type="text" id="m3" name="m3" size="24" /><p>
+【血型】: <input type="text" id="m4" name="m4" size="24" /><p>
+【學歷】: <input type="text" id="m5" name="m5" size="24" />
+</div>
+</td></tr>
+<tr><td align="center">
+<input type="button" id="bt6" class="bt" value="刪除" style="display:none;"/>
+<input type="button" id="bt7" class="bt" value="修改" style="display:none;"/>
+</td></tr>
+<tr><td height="10" align="right">
+	<a href="14Fbpage_main(0116).html">回首頁</a>
+</td></tr>
+</table>
+</form>
+<hr color="darkred" width="300" size="10" />
+</center>
+</body>
+</html>

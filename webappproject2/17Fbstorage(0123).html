@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2017/01/23</title>
+<style type="text/css">
+<!--
+body { font-size:15px;}
+.dv,.bt { font-size:15px;}
+-->
+</style>
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+<script language="javascript" src="jquery-3.1.1.min.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+	var config = {
+			apiKey: "AIzaSyCMxRE7-4pn5tSKdbYdcfTK62y6Sr6CS8c",
+			authDomain: "chien1-9a5df.firebaseapp.com",
+			databaseURL: "https://chien1-9a5df.firebaseio.com",
+			storageBucket: "chien1-9a5df.appspot.com",
+			messagingSenderId: "785767490185"
+	};
+	firebase.initializeApp(config);
+/* ---------------------------------------------------- */	
+	var stg_device=firebase.storage();
+	var stg_root_node=stg_device.ref();
+	$("#bt1").click(function()
+		{
+			document.getElementById("t1").value="";
+			document.getElementById("sp1").innerHTML="";
+			document.getElementById("sp2").innerHTML="";
+		/*ups.addEventListener("change",function()
+			{	var f=this.files[0];
+				var realup=stg_root_node.child(f.name).put(f);
+			},false);*/
+		var ups1=document.getElementById("file1");
+		var f=ups1.files[0];
+		var realup=stg_root_node.child(f.name).put(f)
+		document.getElementById("sp1").innerHTML="上傳一成功!";
+		var ups2=document.getElementById("file2");
+		var f=ups2.files[0];
+		var realup=stg_root_node.child(f.name).put(f)
+		document.getElementById("sp2").innerHTML="上傳二成功!";
+	});	
+	$("#bt2").click(function()
+		{
+		var ft=document.getElementById("t1").value;
+		if (ft=="")	 { alert("請輸入檔名"); }
+		else {
+		var starsRef=stg_root_node.child(ft);
+		starsRef.getDownloadURL().then(function(url)
+		{	document.getElementById("dv1").innerHTML=document.getElementById("dv1").innerHTML+"★<img src='"+url+"' width='100' height='150'/>★"
+		}).catch(function(error)
+		{
+			alert(error);
+		});  }
+	});
+	var img=["x1.jpg","x2.jpg","x19.jpg","x10.jpg"];
+	var len=img.length;
+	$("#bt3").click(function()
+		{
+		 for(i=0;i<len;i++)
+			{ 	var starsRef=stg_root_node.child(img[i]);
+				starsRef.getDownloadURL().then(function(url)
+				{
+					document.getElementById("dv1").innerHTML=document.getElementById("dv1").innerHTML+"<img src='"+url+"' width='100' height='150'/>&nbsp;&nbsp;";
+				}).catch(function(error)
+				{
+					alert(error);
+				});
+			}
+	});
+	$("#bt4").click(function()
+		{
+		var ft=document.getElementById("t1").value;
+		if (ft=="")	 { alert("請輸入檔名"); }
+		else {
+			var starsRef=stg_root_node.child(ft);
+		starsRef.delete().then(function(url)
+		{
+			alert("刪除成功!");document.getElementById("t1").value="";
+			document.getElementById("dv1").innerHTML="";
+		}).catch(function(error)
+		{
+			alert(error);
+		});  }
+	});
+	$("#bt5").click(function()
+		{ location.href="17Fbstorage(0123).html"; });
+});
+</script>
+</head>
+
+<body>
+<center>
+<hr color="darkred" width="300" size="10" />
+<form id="f1" name="f1" method="get">
+影像一：<input type="file" id="file1" name="file1" size="50" />
+<span id="sp1"></span>
+<p>
+影像二：<input type="file" id="file2" name="file2" size="50" />
+<span id="sp2"></span><br />
+<input type="button" id="bt1" class="bt" value="傳送" />
+<p>
+請輸入要處理的檔案:
+<input type="text" id="t1" name="t1" size="10" value="" />
+<input type="button" id="bt2" class="bt" value="讀檔" />
+<input type="button" id="bt4" class="bt" value="刪除" />
+<input type="button" id="bt3" class="bt" value="連續讀檔" />
+<input type="button" id="bt5" class="bt" value="清除" />
+<p>
+<div id="dv1"></div>
+</form>
+<hr color="darkred" width="300" size="10" />
+</center>
+</body>
+</html>

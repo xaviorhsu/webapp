@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2016/12/26</title>
+<style type="text/css">
+<!--
+#apDiv1 {
+	left:23px;
+	top:20px;
+	width:802px;
+	height:112px;
+	overflow:scroll;
+	background-color:#CCF;
+	border:2px solid #300;
+}
+#apDiv2 {
+	left:23px;
+	top:130px;
+	width:720px;
+	height:300px;
+	background-color:#000;
+	padding:40px;
+	border:4px solid #F00;
+}
+p a { text-decoration:none; background-color:#99F;font-size:20px; color:darkred; font-weight:bold; border:2px solid #60C; box-shadow:10px 10px 10px orange;}
+-->
+</style>
+<script language="javascript" src="jquery-3.1.1.min.js">
+</script>
+<script language="javascript">
+	$(document).ready(function()	{
+		$("#tb1 a img").click(function(){
+			var t=$(this).attr("src");
+			$("#apDiv2 img").fadeOut(1000,function()
+			{
+				$("#apDiv2 img").attr("src",t);
+				$("#apDiv2 img").fadeIn(1000);
+			});
+			/* $("#apDiv2").fadeOut(500,function()
+			{
+				$("#apDiv2 img").attr("src",t);
+				$("#apDiv2").fadeIn(1500);
+			}); */
+		});
+    });
+	function fun1()	{
+			var name=document.f1.t2.value;
+			alert("我的名字："+name);
+	}
+	function fun2()	{
+			var t=prompt("請輸入數值");
+			if (t!=""&&t!=null) {
+			var y=((t%2)==0)?"偶數":"奇數";
+			alert(t+" 是 "+y);
+			var y=(t!=45)?"真":"假";
+			alert(t+" 不等於 45 是 "+y);
+			alert("alert(t++) 的值是 "+(t++) );
+			alert("之後 alert(t) 的值是 "+t);
+			}
+			else {if (t==null) exit; else fun2();}
+	}
+</script>
+</head>
+
+<body>
+<hr />
+<center>
+<div id="apDiv1">
+<table border="1" id="tb1">
+<tr>
+	<td><a href="javascript:voide;" >
+        	<img src="image/x1.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x2.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x3.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x4.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x15.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x14.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x13.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x12.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x11.jpg" width="150" height="88"/></a></td>
+    <td><a href="javascript:voide;" >
+        	<img src="image/x10.jpg" width="150" height="88"/></a></td>
+</tr>
+</table>
+</div>
+<div id="apDiv2">
+	<img src="image/x5.jpg" width="720" height="300" style="border:1px solid #CF0; box-shadow:10px 10px 10px orange;"/>
+</div>
+<hr />
+<form id="f1" name="f1" method="post">
+<table id="tb1" border="1" width="300" bgcolor="orange" style=" box-shadow:10px 10px 10px gray;" >
+<tr><td width="20%"><label id="lb2">姓名</label></td>
+    <td width="80%"><input type="text" id="t2" name="t2" size="20" /></td>
+</tr>
+<tr><td colspan="2">
+	<table border="0" width="100%">
+        <tr><td width="50%">
+        <input type="button" id="s1" name "s1" value="確定" style="font-size:18px" onclick="fun1();" />
+        </td>
+        <td align="right" width="50%">
+        <input type="reset" id="r1" name "r1" value="清除" style="font-size:18px" />
+        </td></tr>
+	</table>
+</td></tr>
+</table>
+</form>
+<hr />
+<p>
+<a href="javascript:voide;"  onclick="fun2();" >【 執 行 】</a>
+</p>
+</center>
+<hr />
+</body>
+</html>

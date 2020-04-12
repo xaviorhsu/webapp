@@ -1,0 +1,21 @@
+<!--<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>-->
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCMxRE7-4pn5tSKdbYdcfTK62y6Sr6CS8c",
+    authDomain: "chien1-9a5df.firebaseapp.com",
+    databaseURL: "https://chien1-9a5df.firebaseio.com",
+    storageBucket: "chien1-9a5df.appspot.com",
+    messagingSenderId: "785767490185"
+  };
+  firebase.initializeApp(config);
+</script>
+
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}

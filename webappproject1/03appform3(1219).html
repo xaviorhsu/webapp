@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2016/12/19</title>
+<!-- ===================appform7S==================================== -->
+<style type="text/css">
+	#tb2  { display:none;}
+	#ibt1 { cursor:pointer;}
+	label { color:blue;}
+	#s1,#r1{ color:blue; font-size:15px; font-weight:bold; background:linear-gradient(to top right,orange,yellow,green);border-radius:10px;box-shadow:5px 5px 5px gray;}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+</script>
+<script language="javascript">
+	function fun1()	{
+		if ($("#f2 table").is(":visible"))
+			 {$("#tb2").css('display','none'); $("#ibtA").html("開啟");}
+		else {$("#tb2").css('display','block');$("#ibtA").html("關閉");}
+    }
+</script>
+<!-- ===================appform7E==================================== -->
+</head>
+
+<body>
+<form id="f1" name="f1" method="get">
+【姓名】：
+<input type="text" id="t1" name="t1" size="25" />
+<input type="button" id="bt1" name="bt1" value="確定" />
+【婚姻】:
+<input type="radio" id="rd1" name="rd" value="已婚" />已婚
+<input type="radio" id="rd2" name="rd" value="未婚" />未婚
+【興趣】:
+<input type="checkbox" id="ck1" name="ck" value="旅行" />旅行
+<input type="checkbox" id="ck2" name="ck" value="籃球" />籃球
+<input type="checkbox" id="ck3" name="ck" value="音樂" />音樂
+<input type="checkbox" id="ck4" name="ck" value="寫作" />寫作
+<input type="checkbox" id="ck5" name="ck" value="大自然" />大自然
+<p>
+【學歷】:
+<select id="se1" name="se1" style="width:120px" >
+	 <option value="高中" >高中</option>
+     <option value="專科" >專科</option>
+     <option value="大學" >大學</option>
+     <option value="研究所" >研究所</option>
+     <option value="其他" >其他</option>
+</select>
+【備註欄】:
+<textarea id="te1" name="te1" cols="30" rows="3"></textarea>
+【密碼欄】:
+<input type="password" id="p1" name="p1" size="25" />
+<input type="submit" id="s1" name="s1" value="傳送" />
+<input type="reset" id="r1" name="r1" value="清除" />
+</form>
+<center>
+<div style="width:830px;border:4px solid gold;">
+<span style="color:#F00;font-size:16px; font-weight:bold">
+有圖形與文字的按鈕</span>
+<table border="0">
+<tr><td align="center">
+<button id="ibt1" name="ibt1">
+<table border="0" width="65" height="65" >
+    <tr>
+    	<td align="center" width="70" height="20">新增</td>
+     </tr>
+	<tr>
+    	<td><img src="icon/ix1.png" width="50" height="50" /></td>
+    </tr>
+</table>
+</button>
+</td>
+<td align="center">
+<button id="ibt2" name="ibt2">
+<table border="0" width="65" height="65"  >
+    <tr>
+        <td><img src="icon/ix2.png" width="50" height="50" /></td>
+     </tr>
+	<tr>
+        <td align="center" width="70" height="20">刪除</td>
+    </tr>
+</table>
+</button>
+</td>
+<td align="center">
+<button id="ibt3" name="ibt3">
+<table border="0" width="65" height="65"  >
+    <tr>
+        <td align="center" width="15" height="72">更<br />新</td>
+        <td><img src="icon/ix3.png" width="50" height="50" /></td>
+    </tr>
+</table>
+</button>
+</td>
+<td align="center">
+<button id="ibt4" name="ibt4" >
+<table border="0" width="65" height="65" >
+    <tr>
+        <td><img src="icon/ix4.png" width="50" height="50" /></td>
+        <td align="center" width="15" height="72">查<br />詢</td>
+    </tr>
+</table>
+</button>
+</td></tr>
+</table>
+</div>
+<hr />
+<!-- ===================appform7==================================== -->
+<table id="tb1" border="1" width="842" background="image/x1.jpg">
+    <tr><td>
+    	<button id="ibtA" name="ibtA" onclick="fun1();">開啟</button>
+    </td></tr>
+</table>
+<form id="f2" name="f2" method="post">
+<table id="tb2" border="1" width="838" height="260" background="image/x8.jpg" >
+<tr><td valign="top" width="830">
+<table border="0" align="center" width="825">
+<tr><td align="center" colspan="6"><b><i>個人基本資料系統</i></b></td></tr>
+<tr>
+    <td width="10%"><label id="lb1">編號</label></td>
+    <td width="24%"><input type="text" id="t1" name="t1" size="20" style=" background-color:#6F0" /></td>
+    <td width="10%"><label id="lb2">姓名</label></td>
+    <td width="23%"><input type="text" id="t2" name="t2" size="20" /></td>
+    <td width="10%"><label id="lb3">生日</label></td>
+    <td width="23%"><input type="text" id="t3" name="t3" size="20" /></td>
+</tr>
+<tr>
+    <td><label id="lb4">性別</label></td>
+    <td><select id="se1" name="se1" style="width:155px" >
+             <option value="男" >男</option>
+             <option value="女" >女</option>
+        </select>
+    </td>
+    <td><label id="lb5">血型</label></td>
+    <td><select id="se2" name="se2" style="width:155px" >
+             <option value="A" >A</option>
+             <option value="AB" >AB</option>
+             <option value="B" >B</option>
+             <option value="C" >C</option>
+             <option value="其他" >其他</label></option>
+        </select>
+    </td>
+    <td><label id="lb6">學歷</label></td>
+    <td><select id="se3" name="se3" style="width:155px" >
+             <option value="高中" >高中</option>
+             <option value="專科" >專科</option>
+             <option value="大學" >大學</option>
+             <option value="研究所" >研究所</option>
+             <option value="其他" >其他</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+  	<td><label id="lb7">婚姻</label></td>
+    <td><input type="radio" id="rd1" name "rd" value="已婚" />已婚
+		<input type="radio" id="rd2" name "rd" value="未婚" />未婚
+    </td>
+    <td><label id="lb8">興趣</label></td>
+    <td colspan="3" align="center">
+    	<input type="checkbox" id="ck1" name "ck1" value="旅行" />旅行
+        <input type="checkbox" id="ck2" name "ck2" value="籃球" />籃球
+        <input type="checkbox" id="ck3" name "ck3" value="音樂" />音樂
+        <input type="checkbox" id="ck4" name "ck4" value="寫作" />寫作
+        <input type="checkbox" id="ck5" name "ck5" value="大自然" />大自然
+    </td>
+</tr>
+<tr>
+	<td colspan="6"><label id="lb9">專長</label></td>
+</tr>
+<tr>
+    <td align="center" colspan="6">
+    	<textarea id="te1" name="te1" cols="95" rows="3"></textarea>
+    </td>
+</tr>
+<tr>
+	<td colspan="6">
+    <table border="0" width="100%">
+        <tr><td width="50%">
+        <input type="submit" id="s1" name "s1" value="傳送" />
+        </td>
+        <td align="right" width="50%">
+        <input type="reset" id="r1" name "r1" value="清除" />
+        </td></tr>
+    </table>
+    </td>
+</tr>
+</table>
+</td></tr>
+</table>
+</form>
+</center>
+</body>
+</html>

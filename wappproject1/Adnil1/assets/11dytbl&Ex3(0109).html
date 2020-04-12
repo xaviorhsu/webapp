@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2016/01/09</title>
+<style type="text/css">
+<!--
+table tr td       { text-align:center; }
+table td input    { font-size:15px; font-weight:bold; color:darkgreen; }
+table td textarea { font-size:15px; font-weight:bold; color:#C60; }
+-->
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script language="javascript">
+var x;
+function fun1(){
+	x=document.getElementById("table1");
+	for (var j=0; j<3; j++) {
+	var y=x.insertRow(j);
+	for (var i=0; i<5; i++) {
+		var z=y.insertCell(i);
+			z.innerHTML=((j+1)+":"+(i+1));	
+	}
+		t=y.insertCell(5);
+		t.innerHTML="<a href='javascript:;' onclick='fun2(this)'>刪除</a>";
+		t=y.insertCell(6);
+		t.innerHTML="<a href='javascript:;' onclick='fun3(this)'>編輯</a>";
+	}
+}
+function fun2(D) {
+	var i=D.parentNode.parentNode.rowIndex;
+	x.deleteRow(i);
+	document.getElementById("sp1").innerHTML="";
+}
+function fun3(D) {	
+	var i=D.parentNode.parentNode.rowIndex;
+	var cno=$("#table1 tr:eq("+i+") td").length-2;
+	var msg="the cells contents of row("+i+") = ";
+	for (j=0; j<cno; j++){
+		msg+=$("#table1 tr:eq("+i+") td:eq("+j+")").text()+"&nbsp;&nbsp;&nbsp;&nbsp;";
+	}
+	document.getElementById("sp1").innerHTML+=msg+"<br />";
+}
+/* -------------------Ex3----dytableoverflow----------------- */
+var rowline=1;
+function funA()	{
+			var id,na;
+			var v3,v4,v5,v6,sm,ag=0;
+			id=document.getElementById("t1").value;
+			na=document.getElementById("t2").value;
+			v3=parseInt(document.getElementById("t3").value);
+			v4=parseInt(document.getElementById("t4").value);
+			v5=parseInt(document.getElementById("t5").value);
+			v6=parseInt(document.getElementById("t6").value);
+			sm=v3+v4+v5+v6;
+			ag=sm/4;
+			document.getElementById("t7").value=sm;
+			document.getElementById("t8").value=ag;
+			
+			var x=document.getElementById('te1');
+			var y=x.insertRow(rowline);
+			for (var i=0; i<8; i++) {
+				var z=y.insertCell(i);
+					z.innerHTML=document.getElementById("t"+(i+1)).value;	
+			}
+			rowline++;
+	}
+function funB()	{
+			document.getElementById("t1").value="";
+			document.getElementById("t2").value="";
+			document.getElementById("t3").value="";
+			document.getElementById("t4").value="";
+			document.getElementById("t5").value="";
+			document.getElementById("t6").value="";
+			document.getElementById("t7").value="";
+			document.getElementById("t8").value="";
+	}
+</script>
+</head>
+
+<body onload="fun1();" style="font-size:14px;font-weight:bold;">
+<center>
+<!-- =================dytable================================ -->
+<hr />
+<table id="table1" border="2" width="700">
+</table>
+<hr />
+<span id="sp1"></span>
+<hr />
+</center>
+<!-- ==================Ex3=dytableoverflow=================== -->
+<table border="1" align="center" width="650" style="background-color:#FCF;">
+<tr><td align="center" colspan="4" style="font-size:20px; font-weight:bold; color:brown;">
+		<b><i><u>學 生 成 績 計 算</u></i></b>
+</td></tr>
+<tr>
+    <td width="10%">學號：</td>
+    <td width="40%" align="center"><input type="text" id="t1" name="t1" size="20" /></td>
+    <td width="10%">姓名：</td>
+    <td width="40%" align="center"><input type="text" id="t2" name="t2" size="20" /></td>    
+</tr>
+<tr>
+    <td>國文：</td>
+    <td align="center"><input type="text" id="t3" name="t3" size="20" /></td>
+    <td>英文：</td>
+    <td align="center"><input type="text" id="t4" name="t4" size="20" /></td>
+ </tr>
+<tr>
+    <td>數學：</td>
+    <td align="center"><input type="text" id="t5" name="t5" size="20" /></td>
+    <td>地理：</td>
+    <td align="center"><input type="text" id="t6" name="t6" size="20" /></td>
+ </tr>
+<tr>
+	<td align="center" colspan="2">
+        <input type="button" id="s1" name "s1" value="計算" onclick="funA();" />
+    </td>
+    <td align="center" colspan="2">
+        <input type="button" id="r1" name "r1" value="清除" onclick="funB();" />
+    </td>
+</tr>
+<tr>
+	<td>總分：</td>
+    <td align="center"><input type="text" id="t7" name="sum" size="20" value="" /></td>
+    <td>平均：</td>
+    <td align="center"><input type="text" id="t8" name="avg" size="20" value="" /></td>
+</tr>
+<tr>
+	<td align="center" colspan="4">
+    <div style="height:210px; overflow:scroll;">
+        <table id="te1" border="1" width="620" >
+        <tr>
+            <td>學號</td><td>姓名</td><td>國文</td><td>英文</td>
+            <td>數學</td><td>地理</td><td>總分</td><td>平均</td>
+        </tr>
+        </table>
+    </div>
+    </td>
+</tr>
+</table>
+<hr />
+</body>
+</html>

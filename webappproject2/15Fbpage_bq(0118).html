@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2017/01/18</title>
+<style type="text/css">
+<!--
+body { font-size:15px;}
+.dv,.bt { font-size:16px;}
+-->
+</style>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script language="javascript" src="jquery-3.1.1.min.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+	var vars=getUrlVars("sw");
+	var msg="";
+	var db=new Firebase("https://chien1-9a5df.firebaseio.com");
+/* ------------------------------------------- */
+	if (vars=="b") { $("#dv1").show();displymsg(1,1); }
+	if (vars=="q") { $("#dv2").show();	}
+/* ------------------------------------------- */	
+  $("#bt5").click(function() {
+	document.getElementById("dv3").innerHTML="";
+	msg="";
+	id1=document.getElementById("t5").value;
+	id2=document.getElementById("t6").value;
+	if (id2=="" && id1=="") { document.getElementById("dv3").innerHTML="請輸入編號";} 
+	else { if (id1!="" && id2=="")	{ id2=id1; }
+		   else if (id2!="" && id1=="") { id1=id2; }
+		   displymsg(id1,id2);}
+  });
+/* ------------------------------------------- */  
+  function displymsg(A,B)
+	{	db.on("value",function(data){
+		 $.each(data.val(),function(k,v){
+			if ((A==1 && B==1) || (v.Aidn>=A && v.Aidn<=B)){
+			msg+="\t"+v.Aidn+"\t"+v.Bnam+"\t"+v.Ebir+"\t"+v.Dbld+"\t"+v.Fsch+"<p>"; }			
+						   				});
+		 if (msg=="") {msg="[查無資料]";}
+	document.getElementById("dv3").innerHTML=msg;
+						   });
+	}
+});
+/* ========================================================= */
+function getUrlVars(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+</script>
+</head>
+
+<body>
+<center>
+<hr color="darkred" width="300" size="10" />
+<form id="f1" name="f1" method="get">
+<table border="1" width="300" height="450" rules="none" background="bg51.jpg">
+<tr><td>
+<div id="dv1" class="dv" style="display:none;">瀏覽結果</div>
+<div id="dv2" class="dv" style="display:none;">
+	起編號<input type="text" id="t5" name="t5" size="4" />
+    訖編號<input type="text" id="t6" name="t6" size="4" />
+    <input type="button" id="bt5" class="bt" value="查詢" />
+</div>
+</td></tr>
+<tr><td height="2"><hr size="2" /></td></tr>
+<tr><td>
+<div id="dv3" class="dv" style="width:300px;height:420px;overflow:scroll;"></div>
+</td></tr>
+<tr><td height="12" align="right">
+	<a href="14Fbpage_main(0116).html">回首頁</a>
+</td></tr>
+</table>
+</form>
+<hr color="darkred" width="300" size="10" />
+</center>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2017/01/06</title>
+<style type="text/css">
+	#sp1 a { font-size:24px;color:blue; }
+	#sp1 a:focus { color:red; }
+	#sp1 a:hover {
+		text-decoration: none; background-color:#F00; box-shadow:5px 5px 5px gray; color:yellow;
+	}	
+</style>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&language=tw"></script>
+<script language="javascript">
+  function chinmap() 
+  {	//查詢地圖上的經緯度 http://card.url.com.tw/realads/map_latlng.php
+	 var latlng = new google.maps.LatLng(22.997116,120.212601); //指定座標
+	 
+     var mopt={
+       zoom:15,
+       center:latlng,
+       mapTypeId: google.maps.MapTypeId.ROADMAP   
+	 }; 
+	 
+	 var map=new google.maps.Map(document.getElementById('map'),mopt);
+	 var marker=new google.maps.Marker({
+		draggable:true,
+		position:latlng,
+		title:"台南火車站",
+		map:map
+		});
+	 var infowindow=new google.maps.InfoWindow();
+	 infowindow.setContent('台南火車站簡介:<p><img src="image/x4.jpg" width="100" height="60" /></p>');
+	 infowindow.setPosition(latlng);
+	 google.maps.event.addListener(marker,"click",function(){
+				infowindow.open(map,marker);
+				});
+  }
+  function printmap(){
+  		window.print();
+  }
+/* -------------------------lopage-------------------------------- */
+  var pic0=new Array();
+	var rowitem,itemno;
+	for (var i=1;i<=32;i++)
+			{ pic0[i-1]="image2/x"+[i]+".jpg"; }
+	function fun0() {
+		rowitem=6;
+		itemno=Math.ceil(pic0.length/rowitem);
+		var itemA=document.getElementById("sp1");
+		for (var i=1;i<=itemno;i++){
+			itemA.innerHTML+='<a class="ap" href="javascript:;"  onclick="fun1('+i+');" >'+i+'</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+		}
+		fun1(1);
+	}
+	function fun1(listI) {		
+		var picI=document.getElementById("sp2");
+		picI.innerHTML="";
+		var st,ed;
+		st=(listI-1)*rowitem+1; ed=listI*rowitem;
+		if (listI==itemno) ed=pic0.length;
+		for (var i=st;i<=ed;i++){
+			picI.innerHTML+="<img src='"+pic0[i-1]+"' width='230' height='150' style='border:2px solid brown; box-shadow:10px 5px 10px gray;' />&nbsp;&nbsp;&nbsp;&nbsp;";
+			if ((i%3)==0) picI.innerHTML+="<p>";
+		}
+	}
+</script>
+</head>
+<body onload="chinmap();fun0();">
+
+<hr />
+<table align="center" border="1" width="900"><tr>
+	<td>
+    <div align="center">
+    <img src="image/x15.jpg" width="400" height="250"
+    onmouseover="this.src='image/x10.jpg'" onmouseout="this.src='image/x15.jpg'" onmousedown="this.src='image/x20.jpg'" style="border:4px solid purple;" />
+    </div>
+	</td>
+	<td align="center">
+    <div id="map" style="width:400px; height:250px"></div>
+    <a href="javascript:voide;"  onclick="printmap();">map print</a>
+	</td>
+</tr></table>
+<hr />
+<!-- =================lopage==================================== -->
+<center>
+<span id="sp1"></span>
+<p>
+<span id="sp2"></span>
+<hr />
+</center>
+</body>
+</html>

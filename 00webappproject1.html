@@ -1,0 +1,86 @@
+<!-- -------------------------prog-start-------------------------------------------------- -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Language" content="zh-TW" />
+<meta name="description" content="00-webappproject1" />
+<title>00-webappproject1</title>
+<style type="text/css">
+<!--
+p a { text-decoration:none;background-color:#99F;font-size:20px; font-weight:bold; border:3px solid orange; box-shadow:8px 8px 8px lightblue;}
+-->
+</style>
+<script language="javascript" src="webappproject1/jquery-3.1.1.min.js"></script>
+<script>try{  var h_frames=window.top.document.getElementsByTagName("frameset"); for(var i=0;i<h_frames.length;i++)  {
+      if(h_frames[i].id.indexOf("MywebFrameSet")!=-1) { h_frames[i].cols = "*,0"; }}}catch(e){}
+      $(parent.document.getElementById("adpage")).remove();
+</script>
+<script language="javascript">
+var http_ip=(location.hostname=="hsuvm6.myweb.hinet.net")?"http://"+location.hostname+"/webapp/":"http://websrv.local.tw/webapp/";
+$(document).ready(function() {  
+  $(parent.document).find('frameset').removeAttr("cols");
+  $(parent.document.getElementById("userpage")).removeAttr("noresize").css("width","100%");
+  var urlname=http_ip+"webappproject1/01appchin3(1214).html";
+  comF(urlname,"p:eq(0) a:eq(0)");
+});
+function funA(anc)	{
+  var urlname=http_ip+"webappproject1/"+anc.innerHTML.substr(1,anc.innerHTML.length-2)+".html";
+  comF(urlname,anc);
+ 	}
+function funB(anc)	{
+  var urlname=http_ip+"wappproject1/Adnil1/"+anc.innerHTML.substr(3,anc.innerHTML.length-4)+".xml";
+  //$("#dv1 iframe").attr("src","https://drive.google.com/file/d/0BwpXV-xHdlZ2TmVadGdRNEhTblk/view"); 
+  comF(urlname,anc);
+	}
+function funC(anc)	{
+  var urlname=http_ip+"webappproject2/"+anc.innerHTML.substr(1,anc.innerHTML.length-2)+".html";
+  comF(urlname,anc);
+	}
+function comF(par1,par2){
+  $("p a").css({"color":"","background-color":"","border":""});
+  $(par2).css({"color":"darkred",'background-color':'#FFEEEE','border':'1px solid darkred'});  
+  $("#dv1 iframe").attr("src",par1);
+}
+</script>
+</head>
+
+<body bgcolor="black">
+<hr color="red" size="10" />
+<center>
+<p>
+<a href="javascript:voide;"  onclick="funA(this);" >【01appchin3(1214)】</a> <=>
+<a href="javascript:voide;"  onclick="funA(this);" >【02appchin6(1216)】</a> <=>
+<a href="javascript:voide;"  onclick="funA(this);" >【03appform3(1219)】</a> <=>
+<a href="javascript:voide;"  onclick="funA(this);" >【04layout1(1221)】</a>
+</p>
+<p>
+<a href="javascript:voide;"  onclick="funA(this);" >【05nntable4(1223)】</a> <=>
+<a href="javascript:voide;"  onclick="funA(this);" >【06nntable6(1226)】</a> <=>
+<a href="javascript:voide;"  onclick="funA(this);" >【07Ex1-js19(1228)】</a> <=>
+<a href="javascript:voide;"  onclick="funA(this);" >【08jsarray8(1230)】</a>
+</p>
+<p>
+<a href="javascript:voide;"  onclick="funA(this);" >【09apfom-Ex2(0104)】</a> <=>
+<a href="javascript:voide;"  onclick="funA(this);" >【10apmap-lpg(0106)】</a> <=>
+<a href="javascript:voide;"  onclick="funA(this);" >【11dytbl-Ex3(0109)】</a> <=>
+<a href="javascript:voide;"  onclick="funB(this);" >【12AndroidManifest】</a>
+</p>
+<p>
+<a href="javascript:voide;"  onclick="funC(this);" >【13dbpage(0113)】</a> <=>
+<a href="javascript:voide;"  onclick="funC(this);" >【14Fbpage_main(0116)】</a> <=>
+<a href="javascript:voide;"  onclick="funC(this);" >【15Fbpage_bq(0118)】</a> <=>
+<a href="javascript:voide;"  onclick="funC(this);" >【16Fbpage_dmsf(0120)】</a> <=>
+<a href="javascript:voide;"  onclick="funC(this);" >【17Fbstorage(0123)】</a>
+</p>
+<hr color="yellow" size="10" />
+<div id="dv1" align="center" style=" background-image: url(webappproject1/image/bg2.jpg); width:80%; height:420px;" >
+    <iframe src="" width="99%" height="415" ></iframe>
+</div>
+</center>
+<hr color="lightblue" size="10" />
+</body>
+</html>
+<!-- ---------------------------------prog-end-------------------------------------------------- -->
+<noscript>

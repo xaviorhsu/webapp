@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2016/12/23</title>
+<style type="text/css">
+<!--
+#div1   {
+	width:635px;
+	height:518px;
+	background-color:#F60;
+	padding:0px;
+	border: 0px solid brown;
+}
+#div1 ol {
+	list-style-type:none;
+	margin-top:auto;
+	margin-left:-37px;
+}
+#div1 ol li{
+	display:inline;
+	float:left;
+	padding:5px;
+	border: 0px solid blue;
+}
+#s1 { cursor:pointer;background:linear-gradient(to top right,orange,yellow,green);border-radius:10px;box-shadow:5px 5px 5px gray;}
+</style>
+<script language="javascript">
+	function fun1()	{
+		var pic=document.f1.se1.value;
+		document.getElementById("im1").src=pic;
+    }
+	function fun2(x)	{
+		var pic=x.src;
+		window.open(pic,"win1"," width=540px, height=400px, left=250px, top=100px");
+    }
+</script>
+</head>
+<body>
+<center>
+<form id="f1" name="f1" method="post">
+<table id="tb2" name="tb2" border="1" width="650">
+<tr height="40">
+    <td width="10%" align="center"><label id="lb1" style="font-size:18px" >地點:</label></td>
+    <td width="80%" align="center">
+    	<select id="se1" name="se1" style="width:250px;font-size:18px;background-color:#6F0;" >
+             <option value="image/x11.jpg" checked >阿里山</option>
+             <option value="image/x15.jpg" >日月潭</option>
+             <option value="image/x3.jpg" >玉山</option>
+             <option value="image/x14.jpg" >西子灣</option>
+             <option value="image/x13.jpg" >碧潭</option>
+        </select>
+    </td>
+    <td width="10%" align="center">
+    <input type="button" id="s1" name "s1" value="確定" style="font-size:18px" onclick="fun1();" />
+    </td>
+</tr>
+<tr><td colspan="3">
+<div>
+	<img id="im1" src="image/x2.jpg" width="650" height="300" />
+</div>
+</td></tr>
+</table>
+</form>
+<hr />
+<div id="div1">
+    <ol>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x10.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x11.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x12.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+    </ol>
+    <ol>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x1.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x3.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x4.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+    </ol>
+    <ol>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x13.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x14.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+        <li><a href="javascript:voide;" >
+        	<img src="image/x15.jpg" width="200" height="160" onclick="fun2(this);" /></a>
+        </li>
+    </ol>
+</div>
+</center>
+<hr />
+</body>
+</html>

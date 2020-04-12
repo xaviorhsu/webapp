@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2017/01/13</title>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<!--<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>-->
+<script language="javascript" src="jquery-3.1.1.min.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+	var config = {
+			apiKey: "AIzaSyCMxRE7-4pn5tSKdbYdcfTK62y6Sr6CS8c",
+			authDomain: "chien1-9a5df.firebaseapp.com",
+			databaseURL: "https://chien1-9a5df.firebaseio.com",
+			storageBucket: "chien1-9a5df.appspot.com",
+			messagingSenderId: "785767490185"
+	};
+	firebase.initializeApp(config);
+/* ---------------------------------------------------- */	
+	$("#snap").click(function()
+		{
+			document.getElementById("sp1").innerHTML="";
+			var db=firebase.database();
+		
+			var items =["1name","Aword","Bword"];
+			for (var i=0;i<items.length;i++)
+			{
+			document.getElementById("sp1").innerHTML+="["+items[i]+"]&nbsp;/&nbsp;";
+			db.ref(items[i]+"/").on("value",
+			function(snap){	data=snap.val();
+			document.getElementById("sp1").innerHTML+="["+data+"]&nbsp;/&nbsp;";},
+			function(err) { alert("資料讀取有誤");	     });
+			}
+			document.getElementById("sp1").innerHTML+="<br/><br/>";
+		});
+$("#st_ph").click(function()
+		{  	db=new Firebase("https://chien1-9a5df.firebaseio.com");
+			var name="張國華";
+			var text="to see you! ";
+			var Aword="Everybody say "+name+" Nice "+text;
+			var Bword="^_^... says: Hello ! ";
+			db.set("Everybody say "+name+" Nice "+text);
+			db.set({'Aword':Aword});
+			db.set({'Bword':Bword});
+			db.set({'1name':name,'Aword':Aword,'Bword':Bword});
+			db.push({Aidn:"p1001",Bnam:"張國華",Ebir:"19780102"});
+			alert("資料寫入FIREBASE成功");
+			document.getElementById("sp0").innerHTML="資料寫入(set/push)Firebase成功";
+			document.getElementById("sp1").innerHTML="";
+		});
+$("#clear").click(function()
+		{  	db=new Firebase("https://chien1-9a5df.firebaseio.com");
+			db.set("");
+			document.getElementById("sp2").innerHTML="資料清除Firebase成功";
+		});
+});
+</script>
+</head>
+
+<body>
+<center>
+<hr color="darkred"width="300" size="10" />
+<input type="button" id="st_ph" class="bt" value="set&push" />
+<P><span id="sp0"></span>
+<hr color="darkred" width="300" size="10"/>
+<input type="button" id="snap" class="bt" value="snapshoot" /> ==>
+<p><span id="sp1"></span>
+<hr color="darkred" width="300" size="10"/>
+<input type="button" id="clear" class="bt" value="clear" /> ==>
+<p><span id="sp2"></span>
+<hr color="darkblue" width="300" size="10"/>
+</center>
+</body>
+</html>

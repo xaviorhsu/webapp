@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2016/12/28(2)</title>
+<style type="text/css">
+<!--
+table tr td       { text-align:center; }
+table td input    { font-size:15px; font-weight:bold; color:darkgreen; }
+table td textarea { font-size:15px; font-weight:bold; color:#C60; }
+p a { text-decoration:none; background-color:#99F;font-size:20px; font-weight:bold; border:2px solid #60C; box-shadow:10px 10px 10px orange;}
+-->
+</style>
+<script language="javascript">
+function funA()	{
+			var id,na="";
+			var v3,v4,v5,v6,sm,ag=0;
+			id=document.getElementById("t1").value;
+			na=document.getElementById("t2").value;
+			v3=parseInt(document.getElementById("t3").value);
+			v4=parseInt(document.getElementById("t4").value);
+			v5=parseInt(document.getElementById("t5").value);
+			v6=parseInt(document.getElementById("t6").value);
+			sm=v3+v4+v5+v6;
+			ag=sm/4;
+			document.getElementById("sum").value=sm;
+			document.getElementById("avg").value=ag;
+			var str=document.getElementById("te1").value;
+			str=str+id+"\t"+na+"\t"+String(v3)+"\t"+String(v4)+"\t";
+			str=str+String(v5)+"\t"+String(v6)+"\t";
+			str=str+String(sm)+"\t"+String(ag)+"\n";
+			document.getElementById("te1").value=str;
+	}
+function funB()	{
+			document.getElementById("t1").value="";
+			document.getElementById("t2").value="";
+			document.getElementById("t3").value="";
+			document.getElementById("t4").value="";
+			document.getElementById("t5").value="";
+			document.getElementById("t6").value="";
+			document.getElementById("sum").value="";
+			document.getElementById("avg").value="";
+	}
+/* -------------------------------------------------------- */
+	function fun1()	{			
+			var x=30;
+			var y=60;
+			document.getElementById("sp1").innerHTML="[1].boolen x=30,y=60 ";
+			var a=(x<=40)&&(y<=70);
+			document.getElementById("sp1").innerHTML+="※(x<=40)&&(y<=70) 是 "+a;
+			var a=(x<=40)||(y<=70);
+			document.getElementById("sp1").innerHTML+="※(x<=40)||(y>=70) 是 "+a;
+			var a=!((x<=40)||(y<=70));
+			document.getElementById("sp1").innerHTML+="※!((x<=40)||(y>=70)) 是 "+a;
+	}
+	function fun2()	{
+	var t=prompt("請輸入成績");
+	document.getElementById("sp1").innerHTML+="<br/>[2].成績= "+t+" 是 ";
+		 if	(t>=90) {
+		document.getElementById("sp1").innerHTML+="甲級";  }
+	else if	(t>=80) {
+		document.getElementById("sp1").innerHTML+="乙級";  }
+	else if	(t>=70) {
+		document.getElementById("sp1").innerHTML+="丙級";  }
+	else if	(t>=60) {
+		document.getElementById("sp1").innerHTML+="丁級";  }
+	else {
+		document.getElementById("sp1").innerHTML+="不及格"; }
+	}
+	function fun3()	{		
+	var t= parseInt(prompt("請輸入(1)~(4)的數值"));
+	document.getElementById("sp2").innerHTML+=" <=^_^=> [3].第"+t+"季是 ";
+	switch (t)
+		{
+		case 1: {
+			document.getElementById("sp2").innerHTML+="櫻花";
+			break; }
+		case 2: {
+			document.getElementById("sp2").innerHTML+="金針花";
+			break; }
+		case 3: {
+			document.getElementById("sp2").innerHTML+="楓葉";
+			break; }
+		case 4: {
+			document.getElementById("sp2").innerHTML+="梅花";
+			break; }
+		default: {
+			document.getElementById("sp2").innerHTML+="沒有輸對項目";
+			break; }
+		}
+	}
+	function fun4()	{						
+			var total=0;
+			for (var i=1;i<=100;i++)
+				 {
+					total=total+i;
+				 }
+			var k="";
+			for (var i=1;i<=10;i++)
+				 {
+					k=k+String(i)+"&nbsp;&nbsp;&nbsp;&nbsp;";
+				 }
+			var d="";
+			for (var i=10;i>=1;i--)
+				 {
+					d=d+String(i)+"&nbsp;&nbsp;&nbsp;&nbsp;";
+				 }
+			var e="";
+			for (var i=1;i<=6;i++)
+				 {
+					if (i==5) break;
+					e=e+String(i)+"&nbsp;&nbsp;&nbsp;&nbsp;";
+				 }
+			var f="";
+			for (var i=1;i<=10;i++)
+				 {
+					if(i==5){ continue; }
+					f=f+String(i)+"&nbsp;&nbsp;&nbsp;&nbsp;";
+				 }
+			var i=1;
+			var sum=0;
+			while (i<=100)
+				 {
+				sum=sum+i;
+				i=i+2;
+				 }
+			var i=0;
+			var add=0;
+			do {
+				add=add+i;
+				i=i+2;
+			} while(i<=100);
+			document.getElementById("dv1").innerHTML="[4].loop ※"+String(total)+"※"+k+"※"+d+"<br/>※"+e+"※"+f+"※"+String(sum)+"※"+String(add);
+	}
+</script>
+</head>
+
+<body style="font-size:18px;font-weight:bold;">
+<table border="1" align="center" width="650" style="background-color:#FCF;">
+<tr><td align="center" colspan="4" style="font-size:20px; font-weight:bold; color:brown;">
+		<b><i><u>學 生 成 績 計 算</u></i></b>
+</td></tr>
+<tr>
+    <td width="10%">學號：</td>
+    <td width="40%" align="center"><input type="text" id="t1" name="t1" size="20" /></td>
+    <td width="10%">姓名：</td>
+    <td width="40%" align="center"><input type="text" id="t2" name="t2" size="20" /></td>    
+</tr>
+<tr>
+    <td>國文：</td>
+    <td align="center"><input type="text" id="t3" name="t3" size="20" /></td>
+    <td>英文：</td>
+    <td align="center"><input type="text" id="t4" name="t4" size="20" /></td>
+ </tr>
+<tr>
+    <td>數學：</td>
+    <td align="center"><input type="text" id="t5" name="t5" size="20" /></td>
+    <td>地理：</td>
+    <td align="center"><input type="text" id="t6" name="t6" size="20" /></td>
+ </tr>
+<tr>
+	<td align="center" colspan="2">
+        <input type="button" id="s1" name "s1" value="計算" onclick="funA();" />
+    </td>
+    <td align="center" colspan="2">
+        <input type="button" id="r1" name "r1" value="清除" onclick="funB();" />
+    </td>
+</tr>
+<tr>
+	<td>總分：</td>
+    <td align="center"><input type="text" id="sum" name="sum" size="20" value="" /></td>
+    <td>平均：</td>
+    <td align="center"><input type="text" id="avg" name="avg" size="20" value="" /></td>
+</tr>
+<tr>
+	<td align="center" colspan="4">
+    	<textarea id="te1" name="te1" cols="66" rows="5"></textarea>
+    </td>
+</tr>
+</table>
+<!-- ======================================================== -->
+<hr color="#3300FF" size="10" />
+<center>
+<p>
+<a href="javascript:voide;"  onclick="fun1();" >【 1.執行(boolen) 】</a>
+<==><==>
+<a href="javascript:voide;"  onclick="fun2();" >【 2.執行(if else)】</a>
+</p>
+<p>
+<a href="javascript:voide;"  onclick="fun3();" >【 3.執行(switch) 】</a>
+<==><==>
+<a href="javascript:voide;"  onclick="fun4();" >【 4.執行(loop) 】</a>
+<br /><br />3.執行(switch)==>選擇季節花:(1)春天(2)夏天(3)秋天(4)冬天
+</p>
+<hr color="darkred" size="10" />
+<span id="sp1"></span>
+<span id="sp2"></span>
+<div id="dv1"></div>
+</center>
+<hr color="#3300FF" size="10" />
+</body>
+</html>
