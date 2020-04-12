@@ -12,13 +12,10 @@
 p a { text-decoration:none;background-color:#99F;font-size:20px; font-weight:bold; border:3px solid orange; box-shadow:8px 8px 8px lightblue;}
 -->
 </style>
-<script language="javascript" src="webappproject1/jquery-3.1.1.min.js"></script>
-<script>try{  var h_frames=window.top.document.getElementsByTagName("frameset"); for(var i=0;i<h_frames.length;i++)  {
-      if(h_frames[i].id.indexOf("MywebFrameSet")!=-1) { h_frames[i].cols = "*,0"; }}}catch(e){}
-      $(parent.document.getElementById("adpage")).remove();
-</script>
+<script language="javascript" src="webappproject1/jquery-3.4.1.min.js"></script>
+
 <script language="javascript">
-var http_ip=(location.hostname=="hsuvm6.myweb.hinet.net")?"http://"+location.hostname+"/webapp/":"http://websrv.local.tw/webapp/";
+var http_ip=(location.hostname!="websrv.local.tw")?"https://"+location.hostname+"/webapp/":"http://websrv.local.tw/webapp/";
 $(document).ready(function() {  
   $(parent.document).find('frameset').removeAttr("cols");
   $(parent.document.getElementById("userpage")).removeAttr("noresize").css("width","100%");
