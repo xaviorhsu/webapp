@@ -25,7 +25,9 @@ $(document).ready(function(){
 	var stg_device=firebase.storage();
 	var stg_root_node=stg_device.ref();
 	$("#bt1").click(function()
-		{
+		{	var ft1=document.getElementById("file1").value;
+			var ft2=document.getElementById("file2").value;
+			if (ft1!="" && ft2!="")	 {
 			document.getElementById("t1").value="";
 			document.getElementById("sp1").innerHTML="";
 			document.getElementById("sp2").innerHTML="";
@@ -33,14 +35,16 @@ $(document).ready(function(){
 			{	var f=this.files[0];
 				var realup=stg_root_node.child(f.name).put(f);
 			},false);*/
-		var ups1=document.getElementById("file1");
-		var f=ups1.files[0];
-		var realup=stg_root_node.child(f.name).put(f)
-		document.getElementById("sp1").innerHTML="上傳一成功!";
-		var ups2=document.getElementById("file2");
-		var f=ups2.files[0];
-		var realup=stg_root_node.child(f.name).put(f)
-		document.getElementById("sp2").innerHTML="上傳二成功!";
+			var ups1=document.getElementById("file1");
+			var f=ups1.files[0];
+			var realup=stg_root_node.child(f.name).put(f)
+			document.getElementById("sp1").innerHTML="上傳一成功!";
+			var ups2=document.getElementById("file2");
+			var f=ups2.files[0];
+			var realup=stg_root_node.child(f.name).put(f)
+			document.getElementById("sp2").innerHTML="上傳二成功!";
+		}
+		else{ alert("是否有未選擇檔案？")}
 	});	
 	$("#bt2").click(function()
 		{
